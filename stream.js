@@ -21,4 +21,28 @@ we invoke the call back function and get access to that chunk of data
 readStream.on('data', (chunk) => {
     console.log('-----NEW CHUNK---------')
     console.log(chunk)
+    /* 
+    Every time we get new piece of data from read stream 
+    take that chunk of data and 
+
+    1.) Write the new chunk line
+    2.) Write new chunk to that file as well.
+
+    -This is how you pass data down a write stream.
+    pass new chunk of data with the write() method
+
+
+
+    */
+    WriteStream.write('\n NEW CHUNK \n')
+    WriteStream.write(chunk)
 })
+
+
+
+
+
+
+/*** Read Strea ****** */
+
+
