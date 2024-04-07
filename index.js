@@ -15,3 +15,15 @@ app.get('/', (req,res) => {
     //automatically sets content type header
     res.send('<p>Home page </p>')
 })
+
+app.get('/', (req,res) => {
+
+    //automatically sets content type header
+    res.send('<p>Home page </p>')
+})
+
+app.get('/about', (req,res) => {
+
+    //automatically sets content type header
+    res.send('<p>About Page</p>')
+})
