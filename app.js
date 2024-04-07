@@ -1,3 +1,4 @@
+/*
 
 const express = require('express');
 
@@ -15,3 +16,5 @@ app.get('/', (req,res) => {
     //automatically sets content type header
     res.send('<p>Home page </p>')
 })
+
+*/
