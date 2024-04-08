@@ -42,3 +42,13 @@ const server = app.listen(3000, () => {
 server.on('error', (error) => {
     console.error('Server error:', error);
 });
+
+
+
+/* 404 page
+-Works as a catch all, if nothing else matches send the user to the 404 page.
+
+*/
+app.use((req, res) => {
+    res.status(404).sendFile('./views/404.html', { root: __dirname });
+  });
