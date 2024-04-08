@@ -10,16 +10,26 @@ app.use(express.static('views'))
 
 app.get('/', (req, res) => {
 
-    //automatically sets content type header
+    /* Automatically sets content type header
     res.send('<p>Home page </p>')
+    */
+    res.sendFile(path.join(__dirname, 'views', 'index.html'));
+
 })
 
 
 
 app.get('/about', (req, res) => {
 
-    //automatically sets content type header
-    res.sendFile('<p>About Page</p>')
+    /* automatically sets content type header
+    sends a html string response back to client
+    res.send('<p>About Page</p>')
+    */
+
+    res.sendFile('./views/about.html', { root: __dirname})
+
+
+    
 })
 
 
