@@ -4,16 +4,16 @@ const express = require('express');
 //storing instance of express app
 const app = express()
 
-app.use(express.static('views'))
+
+//Register view engine
+app.set('view engine', 'ejs')
 
 
-
+//Take a view - render it, sennd back to broswer
+//Automatically sets content type header
 app.get('/', (req, res) => {
 
-    /* Automatically sets content type header
-    res.send('<p>Home page </p>')
-    */
-    res.sendFile(path.join(__dirname, 'views', 'index.html'));
+    res.render('index');
 
 })
 
