@@ -26,7 +26,7 @@ app.get('/about', (req, res) => {
     res.send('<p>About Page</p>')
     */
 
-    res.sendFile('./views/about.html', { root: __dirname})
+   res.render('about')
 
 
     
@@ -44,11 +44,16 @@ server.on('error', (error) => {
 });
 
 
+//inside render method -> send back create "view"
+app.get('/blogs/create', (req, res) => {
+    res.render('create')
+})
+
 
 /* 404 page
 -Works as a catch all, if nothing else matches send the user to the 404 page.
 
 */
 app.use((req, res) => {
-    res.status(404).sendFile('./views/404.html', { root: __dirname });
+    res.status(404).render('404');
   });
