@@ -13,7 +13,7 @@ app.set('view engine', 'ejs')
 //Automatically sets content type header
 app.get('/', (req, res) => {
 
-    res.render('index');
+    res.render('index', {title: 'Home'});
 
 })
 
@@ -26,7 +26,7 @@ app.get('/about', (req, res) => {
     res.send('<p>About Page</p>')
     */
 
-   res.render('about')
+   res.render('about', {title: 'About'})
 
 
     
