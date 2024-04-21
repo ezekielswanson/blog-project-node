@@ -9,6 +9,15 @@ const app = express()
 app.set('view engine', 'ejs')
 
 
+app.use((req, res) => {
+    console.log('new request made:');
+    console.log('host: ', req.hostname);
+    console.log('path: ', req.path);
+    console.log('method: ', req.method);
+
+})
+
+
 //Take a view - render it, sennd back to broswer
 //Automatically sets content type header
 app.get('/', (req, res) => {
