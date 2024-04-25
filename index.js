@@ -1,5 +1,6 @@
 
 const express = require('express');
+const morgan = require('morgan');
 
 //storing instance of express app
 const app = express()
@@ -17,6 +18,17 @@ app.use((req, res) => {
 
 })
 
+app.listen(3000);
+
+/*
+// Listen for requests and add error handling
+const server = app.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
+*/
+
+app.use(morgan('dev'));
+
 
 //Take a view - render it, sennd back to broswer
 //Automatically sets content type header
@@ -29,6 +41,9 @@ app.get('/', (req, res) => {
   
     res.render('index', { title: 'Home', blogs: blogs,  });
   });
+
+
+ 
   
 
 
@@ -47,10 +62,7 @@ app.get('/about', (req, res) => {
 })
 
 
-// Listen for requests and add error handling
-const server = app.listen(3000, () => {
-    console.log('Server is running on port 3000');
-});
+
 
 // Error handling
 server.on('error', (error) => {
