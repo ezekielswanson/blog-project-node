@@ -18,14 +18,16 @@ app.use((req, res) => {
 
 })
 
-app.listen(3000);
-
-/*
 // Listen for requests and add error handling
 const server = app.listen(3000, () => {
   console.log('Server is running on port 3000');
 });
-*/
+
+// Error handling
+server.on('error', (error) => {
+  console.error('Server error:', error);
+});
+
 
 app.use(morgan('dev'));
 
