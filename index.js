@@ -51,3 +51,6 @@ const server = app.listen(3000, () => {
 server.on('error', (error) => {
     console.error('Server error:', error);
 });
+
+
+app.use(express.static('public'));
