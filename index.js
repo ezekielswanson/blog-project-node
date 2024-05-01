@@ -1,5 +1,6 @@
 const express = require('express');
 const morgan = require('morgan');
+const mongoose = require('mongoose');
 
 // Storing instance of express app
 const app = express();
@@ -9,6 +10,13 @@ app.set('view engine', 'ejs');
 
 // Morgan logging middleware
 app.use(morgan('dev'));
+
+
+//connect to mongoDB
+const dbURI = 'MONGO_URI=mongodb+srv://netninja:<zeke1995>@cluster0.urkpacq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
+
+//Rendering static files
+app.use(express.static('public'));
 
 // General request logging middleware - enhanced with next to continue the cycle
 app.use((req, res, next) => {
@@ -53,4 +61,3 @@ server.on('error', (error) => {
 });
 
 
-app.use(express.static('public'));
