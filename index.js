@@ -76,7 +76,7 @@ app.use((req, res) => {
     res.status(404).render('404');
 });
 
-\
+
 // Error handling
 server.on('error', (error) => {
     console.error('Server error:', error);

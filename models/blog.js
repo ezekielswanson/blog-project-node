@@ -41,3 +41,23 @@ to that new blog doc (database) for us
 */
 
 },{ timestapms: true})
+
+
+
+/*
+-The model wraps the scheama and provides a mneas to 
+communicate with the data base collection
+
+-First argument is the name of the model
+->looks at blogs collection in MongoDB
+
+-Pass in ths schame you created on line 18
+*/
+
+
+
+const Blog = mongoose.model('Blog'. blogSchema);
+
+//Exporting module so we can use it in our code;
+module.exports = Blog;
+
