@@ -1,6 +1,9 @@
 const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
+const Blog = require('./models/blog');
+
+
 
 // Storing instance of express app
 const app = express();
@@ -10,6 +13,31 @@ app.set('view engine', 'ejs');
 
 // Morgan logging middleware
 app.use(morgan('dev'));
+
+
+//Mongoose and Mongo Sandbox routes 
+app.get('/add-blog', (req, res) => {
+    const blog = new Blog({
+        title: 'new blog',
+        snippet: 'Jesus Christ is My Savior',
+        body: 'click here to read more!'
+    });
+
+    blog.save()
+        .then((result) => {
+            res.send(result); // Added semicolon
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).send('An error occurred while saving the blog'); // Added error response
+        }); // Closed the catch block properly
+});
+
+
+
+
+
+
 
 // Connect to MongoDB
 const dbURI  = 'mongodb+srv://gbaby16:gbaby16@cluster0.urkpacq.mongodb.net/?retryWrites=true&w=majority';
