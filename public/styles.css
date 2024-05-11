@@ -19,7 +19,7 @@
       justify-content: space-between;
       margin-bottom: 60px;
       padding-bottom: 10px;
-      border-bottom: 1px solixsd #ddd;
+      border-bottom: 1px solid #ddd;
       text-transform: uppercase;
     }
     nav ul{
@@ -86,7 +86,3 @@
       font-size: 1.2em;
       cursor: pointer;
     }
-
-
-
-    

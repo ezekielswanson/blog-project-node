@@ -1,4 +1,7 @@
 
+
+/*
+
 //Importing the file system module
 const fs = require('fs');
 
@@ -62,3 +65,5 @@ if (fs.existsSync('./docs/deleteme.txt',)) {
         console.log('file deleted')
     })
 }
+
+*/
