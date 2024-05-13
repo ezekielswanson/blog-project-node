@@ -11,7 +11,7 @@ const dbURI = 'mongodb+srv://gbaby16:gbaby16@cluster0.urkpacq.mongodb.net/?retry
 
 async function connect() {
     try {
-      await mongoose.connect(uri);
+      await mongoose.connect(dbURI);
       console.log("Successful connection to MongoDB");
     } catch (error) {
       console.log(error);
@@ -19,6 +19,9 @@ async function connect() {
   }
 
   connect();
+
+  const PORT = process.env.PORT || 3000; // Using environment variable or default to 3000
+
   app.listen(PORT, () => console.log(`Server started on ${PORT}`));
 
 
