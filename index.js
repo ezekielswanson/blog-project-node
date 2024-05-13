@@ -7,12 +7,27 @@ const Blog = require('./models/blog');
 const app = express();
 
 // connect to mongodb & listen for requests
-const dbURI = 'mongodb+srv://gbaby16:gbaby16@cluster0.urkpacq.mongodb.net/?retryWrites=true&w=majority';
+const dbURI = 'mongodb+srv://gbaby16:gbaby16@cluster0.urkpacq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+
+async function connect() {
+    try {
+      await mongoose.connect(uri);
+      console.log("Successful connection to MongoDB");
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  connect();
+  app.listen(PORT, () => console.log(`Server started on ${PORT}`));
 
 
+/*
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(result => app.listen(3000))
   .catch(err => console.log(err));
+
+*/
 
 // register view engine
 app.set('view engine', 'ejs');
