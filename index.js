@@ -104,6 +104,25 @@ app.get('/blogs', (req, res) => {
     });
 });
 
+
+//Adding blog to db
+app.post('/blogs', (req, res) => {
+    const blog = new Blog({
+      title: 'New blog added',
+      snippet: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry',
+      body: 'The full content of the blog.'
+    });
+  
+    blog.save()
+      .then(result => {
+        res.redirect('/blogs');
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  });
+  
+
 // 404 page
 app.use((req, res) => {
   res.status(404).render('404', { title: '404' });
