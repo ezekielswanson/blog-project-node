@@ -6,8 +6,9 @@ const Blog = require('./models/blog');
 // express app
 const app = express();
 
-// connect to mongodb & listen for requests
-const dbURI = 'mongodb+srv://gbaby16:gbaby16@cluster0.urkpacq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+// connect to mongodb & listen for requests tuts1995
+const dbURI = "mongodb+srv://zeke:tuts1995@nodetuts.63mmpj6.mongodb.net/?retryWrites=true&w=majority&appName=nodetuts";
+
 
 async function connect() {
     try {
