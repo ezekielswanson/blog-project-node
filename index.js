@@ -43,6 +43,9 @@ app.use((req, res, next) => {
   res.locals.path = req.path;
   next();
 });
+//takes url encoded data and pass it into the req obj
+//handles form data
+app.use(express.urlencoded({extended: true}));
 
 // mongoose & mongo tests
 app.get('/add-blog', (req, res) => {
@@ -105,6 +108,7 @@ app.get('/blogs', (req, res) => {
 });
 
 
+/*
 //Adding blog to db
 app.post('/blogs', (req, res) => {
     const blog = new Blog({
@@ -121,6 +125,18 @@ app.post('/blogs', (req, res) => {
         console.log(err);
       });
   });
+
+*/
+
+//post
+app.post('/blogs', (req, res) => {
+  const blog = new Blog(req.body)
+
+  blog.save()
+    .then((result) => {
+      res.redirect('/blogs');
+    })
+})
   
 
 // 404 page
