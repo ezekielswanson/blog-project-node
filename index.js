@@ -2,6 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const Blog = require('./models/blog');
+const { render } = require('ejs');
 
 // express app
 const app = express();
@@ -138,6 +139,35 @@ app.post('/blogs', (req, res) => {
     })
 })
   
+
+//handling blog id
+// : in front of id denotes it's an id
+app.get('/blogs/:id', (req, res) =>{
+  //search in DB for doc w/ id
+
+  //get id
+  const id = req.params.id;
+  console.log(id);
+
+  //get document from db with that id
+  /*
+  -Blog is the model in the database
+  -method on that model and the method 
+  takes in data (id)
+  -"think pass in data into the method/function"
+  */
+
+  //find by id then render data
+  Blog.findById(id)
+    .then(result => {
+      res.render('details', {blog: result, title: "Blog Details"})
+    })
+    .catch(err => {
+      console.log("id incorrect", err)
+
+    })
+
+})
 
 // 404 page
 app.use((req, res) => {
