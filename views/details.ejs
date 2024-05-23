@@ -14,6 +14,25 @@
 
   <%- include("./partials/footer.ejs") %>
 
+  
+    <script>
+        //This is an ajax request 
+        const deleteBtn = document.querySelector('a.delete');
+        deleteBtn.addEventListener('click', (e) => {
+            const endpoint = `/blogs/${trashcan.dataset.doc}`;
+
+            //Send delete req to the end point on btn click
+            //second arg is an object to specifiy req data, etc for the server 
+            fetch(endpoint,{
+                method: 'DELETE'
+            })
+            .then()
+            .catch(err => {
+
+            })
+
+        })
+    </script>
 
 </body>
 </html>

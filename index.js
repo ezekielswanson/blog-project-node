@@ -169,6 +169,23 @@ app.get('/blogs/:id', (req, res) =>{
 
 })
 
+
+app.delete('/blogs/:id', (req, res) => {
+  const id = req.params.id;
+  
+  //in node can't send redirect as response when sending ajax req
+  /*
+  -will send json data BACK to brwoser and that json data has redirect prop
+  -when data's recieved back in details.ejs look @ redirect prop 
+  and this will be where we redirect. Based on the redirect prop  in jSON
+  */
+
+  Blog.findByIdAndDelete(id)
+    .then(result => {
+
+    })
+})
+
 // 404 page
 app.use((req, res) => {
   res.status(404).render('404', { title: '404' });
