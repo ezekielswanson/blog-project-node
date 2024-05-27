@@ -1,6 +1,7 @@
 
 
 const express = require('express')
+const blogController = require('../controller/blogController');
 
 
 //Creates instance of router object
@@ -16,7 +17,7 @@ router.get('/', (req, res) => {
   
   
   /*
-  //Adding blog to db
+  //Adding blog to dbg
   router.post('/blogs', (req, res) => {
       const blog = new Blog({
         title: 'New blog added',

@@ -12,7 +12,6 @@ Import that file here
 */
 
 const Blog = require('../models/blog');
-const blogController = require('../controller/blogController');
 
 const blog_index = (req, res) => {
     Blog.find().sort({ createdAt: -1 })
