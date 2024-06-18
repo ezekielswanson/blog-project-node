@@ -9,31 +9,31 @@
     <div class="content">
       <p><%= blog.body %></p>
     </div>
-    <a class="delete" data-doc="<%= blog._id %>">delete</a>
+    <a class="delete" data-doc="<%= blog._id %>">
+      <img src="/trashcan.svg" alt="delete icon">
+    </a>
   </div>
 
   <%- include("./partials/footer.ejs") %>
 
+  <script>
   
-    <script>
-        //This is an ajax request 
-        const deleteBtn = document.querySelector('a.delete');
-        deleteBtn.addEventListener('click', (e) => {
-            const endpoint = `/blogs/${trashcan.dataset.doc}`;
+  //This is an ajax request 
 
-            //Send delete req to the end point on btn click
-            //second arg is an object to specifiy req data, etc for the server 
-            fetch(endpoint,{
-                method: 'DELETE'
-            })
-            .then((response) => response.json())
-            .then((data) => window.location.href = data.redirect)
-            .catch(err => {
-              console.log(err)
-            });
+    const trashcan = document.querySelector('a.delete');
 
-        })
-    </script>
-
+    trashcan.addEventListener('click', (e) => {
+      const endpoint = `/blogs/${trashcan.dataset.doc}`;
+      //Send delete req to the end point on btn click
+      //second arg is an object to specifiy req data, etc for the server 
+      fetch(endpoint, {
+        method: 'DELETE',
+      })
+      .then(response => response.json())
+      .then(data => window.location.href = data.redirect)
+      .catch(err => console.log(err));
+    });
+    
+  </script>
 </body>
 </html>

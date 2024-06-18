@@ -18,6 +18,6 @@ router.delete('/:id', blogController.blog_delete);
 
 
 
-
-
 module.exports = router;
+
+

@@ -1,3 +1,4 @@
+
 <html lang="en">
 <%- include("./partials/head.ejs") %>
 
@@ -7,10 +8,10 @@
   <div class="blogs content">
     <h2>All Blogs</h2>
 
-    <!-- Check if there's blog in mogoDB-->
+  <!-- Check if there's blog in mogoDB-->
     <% if (blogs.length > 0) { %>
       <% blogs.forEach(blog => { %>
-        <a href="/blogs/<%= blog._id %>" class="single">
+        <a class="single" href="/blogs/<%= blog._id %>">
           <h3 class="title"><%= blog.title %></h3>
           <p class="snippet"><%= blog.snippet %></p>
         </a>
