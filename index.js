@@ -3,17 +3,15 @@ const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const blogRoutes = require('./routes/blogRoutes');
+require('dotenv').config();
+
 
 // express app
 const app = express();
 
-// connect to mongodb & listen for requests
-n// connect to mongodb & listen for requests tuts1995
-const dbURI = "mongodb+srv://zeke:tuts1995@nodetuts.63mmpj6.mongodb.net/?retryWrites=true&w=majority&appName=nodetuts";
-
 
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(result => app.listen(3000))
+  .then(result => app.listen(process.env.PORT || 3000))
   .catch(err => console.log(err));
 
 // register view engine
