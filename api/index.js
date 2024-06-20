@@ -19,7 +19,7 @@ mongoose.connect(dbURI)
     console.error('Failed to connect to MongoDB', err);
     process.exit(1); // Exit the process if the connection fails
   });
-ch(err => console.log(err));
+(err => console.log(err));
   
 
 // register view engine
