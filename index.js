@@ -1,6 +1,9 @@
 //Load environment variables from .env file
 require('dotenv').config();
 
+//setting connection string to database
+const dbURI = process.env.MONGODB_URI;
+
 
 //Loading libraries
 const express = require('express');
@@ -10,6 +13,10 @@ const Blog = require('./models/blog');
 
 // express app
 const app = express();
+
+
+
+
 
 
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })

@@ -2,14 +2,13 @@
   "name": "blog-project-node",
   "version": "1.0.0",
   "description": "",
-  "main": "api/vercel-handler.js",  
+  "main": "index.js",  
   "homepage": "http://ezekielswanson.github.io/blog-project-node",
   "scripts": {
-    "start": "node api/vercel-handler.js",  
-    "dev": "nodemon api/vercel-handler.js", 
+    "start": "node index.js",  
+    "dev": "n index.js", 
     "test": "echo \"Error: no test specified\" && exit 1",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d public"
+    "predeploy": "npm run build"
   },
   "author": "",
   "license": "ISC",
@@ -23,7 +22,6 @@
     "serverless-http": "^2.7.0"  
   },
   "devDependencies": {
-    "gh-pages": "^6.1.1",
     "nodemon": "^3.1.0"
   }
 }
