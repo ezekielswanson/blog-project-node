@@ -1,16 +1,18 @@
 {
   "name": "blog-project-node",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",  
+  "description": "A blog project using Node.js",
+  "main": "index.js",
   "homepage": "http://ezekielswanson.github.io/blog-project-node",
   "scripts": {
-    "start": "node index.js",  
-    "dev": "n index.js", 
+    "start": "node index.js",
+    "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "prebuild": "echo \"Running prebuild tasks...\"",
+    "build": "echo \"Building the project...\"",
     "predeploy": "npm run build"
   },
-  "author": "",
+  "author": "Your Name",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.4.5",
@@ -19,7 +21,7 @@
     "mongodb": "^6.6.1",
     "mongoose": "^8.3.4",
     "morgan": "^1.10.0",
-    "serverless-http": "^2.7.0"  
+    "serverless-http": "^2.7.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.0"
