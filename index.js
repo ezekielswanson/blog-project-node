@@ -98,7 +98,7 @@ app.use((req, res) => {
 });
 
 
-app.get('/', (req, res) => {
+app.get('/api', (req, res) => {
     res.send("server is running")
   });
 
@@ -110,3 +110,4 @@ app.listen(process.env.PORT || 3000,()=>{
     .catch(err => console.log(err,"connection failed"));
     
  })
+
