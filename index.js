@@ -92,16 +92,17 @@ app.get('/blogs', (req, res) => {
     });
 });
 
-// 404 page
-app.use((req, res) => {
-  res.status(404).render('404', { title: '404' });
-});
+
 
 
 app.get('/api', (req, res) => {
     res.send("server is running")
   });
 
+// 404 page
+app.use((req, res) => {
+    res.status(404).render('404', { title: '404' });
+  });
   
 app.listen(process.env.PORT || 3000,()=>{
 
