@@ -17,11 +17,12 @@ const app = express();
 
 
 
-
-
+/*
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(result => app.listen(3000))
   .catch(err => console.log(err));
+*/
+
 
 // register view engine
 app.set('view engine', 'ejs');
@@ -71,9 +72,6 @@ app.get('/single-blog', (req, res) => {
     });
 });
 
-app.get('/', (req, res) => {
-  res.redirect('/blogs');
-});
 
 app.get('/about', (req, res) => {
   res.render('about', { title: 'About' });
@@ -98,3 +96,17 @@ app.get('/blogs', (req, res) => {
 app.use((req, res) => {
   res.status(404).render('404', { title: '404' });
 });
+
+
+app.get('/', (req, res) => {
+    res.send("server is running")
+  });
+
+  
+app.listen(process.env.PORT || 3000,()=>{
+
+    mongoose.connect(dbURI, /*{ useNewUrlParser: true, useUnifiedTopology: true } */ )
+
+    .catch(err => console.log(err,"connection failed"));
+    
+ })
