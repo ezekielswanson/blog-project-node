@@ -16,23 +16,21 @@ const blogRoutes = require('./routes/blogRoutes');
 const app = express();
 
 
+
 app.listen(process.env.PORT || 3000,()=>{
 
+  //Connecting to MongoDB database
   mongoose.connect(dbURI, /*{ useNewUrlParser: true, useUnifiedTopology: true } */ )
 
   .catch(err => console.log(err,"connection failed"));
   
 })
 
-/*
-mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(result => app.listen(3000))
-  .catch(err => console.log(err));
-*/
 
 
 // register view engine
 app.set('view engine', 'ejs');
+
 
 // middleware & static files
 app.use(express.static('public'));
