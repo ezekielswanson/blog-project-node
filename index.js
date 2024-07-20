@@ -4,6 +4,9 @@ require('dotenv').config();
 //setting connection string to database
 const dbURI = process.env.MONGODB_URI;
 
+//Access token for HubSpot
+const accessToken = process.env.HUBSPOT_ACCESS_TOKEN;
+
 
 //Loading libraries
 const express = require('express');
@@ -36,6 +39,7 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
+
 app.use((req, res, next) => {
   res.locals.path = req.path;
   next();
@@ -46,9 +50,14 @@ app.get('/', (req, res) => {
   res.redirect('/blogs');
 });
 
+
+//Routes GET req to the correct endpoint
 app.get('/about', (req, res) => {
   res.render('about', { title: 'About' });
 });
+
+
+
 
 // blog routes
 app.use('/blogs', blogRoutes);
@@ -57,3 +66,4 @@ app.use('/blogs', blogRoutes);
 app.use((req, res) => {
   res.status(404).render('404', { title: '404' });
 });
+

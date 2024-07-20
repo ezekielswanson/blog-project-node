@@ -1,3 +1,4 @@
+const axios = require('axios');
 const Blog = require('../models/blog');
 
 const blog_index = (req, res) => {
@@ -48,12 +49,43 @@ const blog_delete = (req, res) => {
     });
 }
 
+/*HubSpot API calls */
+
+
+//Create object
+const createCustomObject = async (data) => {
+  const url = 'https://api.hubapi.com/crm/v3/objects/custom_blog';
+  const headers = {
+    Authorization: `Bearer ${process.env.HUBSPOT_ACCESS_TOKEN}`,
+    'Content-Type': 'application/json'
+  };
+
+  try {
+    const res = await axios.post(url, { properties: data }, { headers });
+    return res.data.id;
+  } catch (error) {
+    console.error('Error creating custom object instance:', error);
+    throw error;
+  }
+}
+
+
+
+
+
+
+
+
+
+
 module.exports = {
   blog_index, 
   blog_details, 
   blog_create_get, 
   blog_create_post, 
-  blog_delete
+  blog_delete,
+ createCustomObject
+
 }
 
 

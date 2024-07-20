@@ -24,7 +24,7 @@
 
     trashcan.addEventListener('click', (e) => {
       const endpoint = `/blogs/${trashcan.dataset.doc}`;
-      //Send delete req to the end point on btn click
+      //Send delete req to the end point on click
       //second arg is an object to specifiy req data, etc for the server 
       fetch(endpoint, {
         method: 'DELETE',
