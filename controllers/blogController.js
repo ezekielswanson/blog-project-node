@@ -27,6 +27,28 @@ const blog_create_get = (req, res) => {
   res.render('create', { title: 'Create a new blog' });
 }
 
+
+
+const blog_create_post = async (req, res) => {
+  const blog = new Blog(req.body);
+
+  try {
+    const result = await blog.save();
+    await handleHubSpotIntegration(result);
+    res.redirect('/blogs');
+  }
+
+  catch (error) {
+    console.error('Error creating blog or custom object:', error);
+    res.status(500).send('An error occurred while creating the blog.'); // Handle error response
+  }
+
+};
+
+
+
+/*
+
 const blog_create_post = (req, res) => {
   const blog = new Blog(req.body);
   blog.save()
@@ -37,6 +59,11 @@ const blog_create_post = (req, res) => {
       console.log(err);
     });
 }
+*/
+
+
+
+
 
 const blog_delete = (req, res) => {
   const id = req.params.id;
@@ -54,7 +81,7 @@ const blog_delete = (req, res) => {
 
 //Create object
 const createCustomObject = async (data) => {
-  const url = 'https://api.hubapi.com/crm/v3/objects/custom_blog';
+  const url = 'https://api.hubapi.com/crm/v3/objects/2-30267161';
   const headers = {
     Authorization: `Bearer ${process.env.HUBSPOT_ACCESS_TOKEN}`,
     'Content-Type': 'application/json'
@@ -63,11 +90,52 @@ const createCustomObject = async (data) => {
   try {
     const res = await axios.post(url, { properties: data }, { headers });
     return res.data.id;
-  } catch (error) {
-    console.error('Error creating custom object instance:', error);
+  } 
+  
+  catch (error) {
+    console.error('Error creating custom object instance. Please check HubSpot Custom Object API Documentation', error);
     throw error;
   }
 }
+
+
+const updateCustomObject = async (objectId, data) => {
+  const url = `https://api.hubapi.com/crm/v3/objects/2-30267161/{objectId}`;
+  const headers = {
+    Authorization: `Bearer ${process.env.HUBSPOT_ACCESS_TOKEN}`,
+    'Content-Type': 'application/json'
+  };
+
+  try {
+    await axios.patch(url, {properties: data}, {headers});
+
+  }
+
+  catch (error) {
+    console.error('Error updated custom object instance. Please check HubSpot Custom Object API Documentation', error);
+    throw error;
+  }
+
+
+}
+
+
+// Function to handle HubSpot integration
+const handleHubSpotIntegration = async (blogData) => {
+  const { title, snippet, body } = blogData;
+
+  // Create a custom object in HubSpot
+  const objectId = await createCustomObject({ title, snippet, body });
+
+  // Update the custom object with blog data
+  await updateCustomObject(objectId, { title, snippet, body });
+
+  console.log('Custom object created and updated successfully');
+};
+
+
+
+
 
 
 
